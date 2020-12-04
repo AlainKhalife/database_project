@@ -1,158 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <title>Globetrotter</title>
-   
-    <link rel = "icon" href =  
-   "https://www.kindpng.com/picc/m/94-949924_airplane-piper-aircraft-free-clipart-with-transparent-transparent.png" 
-            type = "image/x-icon"> 
-			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-           
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta http-equiv="X-UA-Compatible" content="ie=edge">
-			<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-	
-			<link rel="stylesheet" href="nav.css">
-		</head>
-		
-		<body>
-			<header>
-				<div class="container">
-					<input type="checkbox" name="" id="check">
-					
-					<div class="logo-container">
-						<h3 class="logo">Globe<span>trotter</span> <i class="fas fa-plane" style="font-size:20px"></i></h3>
-						
-						
-					</div>
-		
-					<div class="nav-btn">
-						<div class="nav-links">
-							<ul>
-								<li class="nav-link" style="--i: .6s">
-									<a href="#">Home</a>
-								</li>
-								<li class="nav-link" style="--i: .85s">
-									<a href="#">Menu<i class="fas fa-caret-down"></i></a>
-									<div class="dropdown">
-										<ul>
-											<li class="dropdown-link">
-												<a href="#">Link 1</a>
-											</li>
-											<li class="dropdown-link">
-												<a href="#">Link 2</a>
-											</li>
-											<li class="dropdown-link">
-												<a href="#">Link 3<i class="fas fa-caret-down"></i></a>
-												<div class="dropdown second">
-													<ul>
-														<li class="dropdown-link">
-															<a href="#">Link 1</a>
-														</li>
-														<li class="dropdown-link">
-															<a href="#">Link 2</a>
-														</li>
-														<li class="dropdown-link">
-															<a href="#">Link 3</a>
-														</li>
-														<li class="dropdown-link">
-															<a href="#">More<i class="fas fa-caret-down"></i></a>
-															<div class="dropdown second">
-																<ul>
-																	<li class="dropdown-link">
-																		<a href="#">Link 1</a>
-																	</li>
-																	<li class="dropdown-link">
-																		<a href="#">Link 2</a>
-																	</li>
-																	<li class="dropdown-link">
-																		<a href="#">Link 3</a>
-																	</li>
-																	<div class="arrow"></div>
-																</ul>
-															</div>
-														</li>
-														<div class="arrow"></div>
-													</ul>
-												</div>
-											</li>
-											<li class="dropdown-link">
-												<a href="#">Link 4</a>
-											</li>
-											<div class="arrow"></div>
-										</ul>
-									</div>
-								</li>
-								<li class="nav-link" style="--i: 1.1s">
-									<a href="#">Services<i class="fas fa-caret-down"></i></a>
-									<div class="dropdown">
-										<ul>
-											<li class="dropdown-link">
-												<a href="#">Link 1</a>
-											</li>
-											<li class="dropdown-link">
-												<a href="#">Link 2</a>
-											</li>
-											<li class="dropdown-link">
-												<a href="#">Link 3<i class="fas fa-caret-down"></i></a>
-												<div class="dropdown second">
-													<ul>
-														<li class="dropdown-link">
-															<a href="#">Link 1</a>
-														</li>
-														<li class="dropdown-link">
-															<a href="#">Link 2</a>
-														</li>
-														<li class="dropdown-link">
-															<a href="#">Link 3</a>
-														</li>
-														<li class="dropdown-link">
-															<a href="#">More<i class="fas fa-caret-down"></i></a>
-															<div class="dropdown second">
-																<ul>
-																	<li class="dropdown-link">
-																		<a href="#">Link 1</a>
-																	</li>
-																	<li class="dropdown-link">
-																		<a href="#">Link 2</a>
-																	</li>
-																	<li class="dropdown-link">
-																		<a href="#">Link 3</a>
-																	</li>
-																	<div class="arrow"></div>
-																</ul>
-															</div>
-														</li>
-														<div class="arrow"></div>
-													</ul>
-												</div>
-											</li>
-											<li class="dropdown-link">
-												<a href="#">Link 4</a>
-											</li>
-											<div class="arrow"></div>
-										</ul>
-									</div>
-								</li>
-								<li class="nav-link" style="--i: 1.35s">
-									<a href="#">About</a>
-								</li>
-							</ul>
-						</div>
-		
-						<div class="log-sign" style="--i: 1.8s">
-							<a href="signinup.html" class="btn transparent" id="signIn">Sign in</a>
-						</div>
-					</div>
-		
-					<div class="hamburger-menu-container">
-						<div class="hamburger-menu">
-							<div></div>
-						</div>
-					</div>
-				</div>
-			</header>
+
+    <link rel="icon" href="https://www.kindpng.com/picc/m/94-949924_airplane-piper-aircraft-free-clipart-with-transparent-transparent.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,400,600i&display=swap" rel="stylesheet">
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/offers.css">
+    <style>
+        .title {
+            color: #6c9da3;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <input type="checkbox" name="" id="check">
+
+            <div class="logo-container">
+                <h3 class="logo">Globe<span>trotter</span> <i class="fas fa-plane" style="font-size:20px"></i></h3>
+
+
+            </div>
+
+            <div class="nav-btn">
+                <div class="nav-links">
+                    <ul>
+                        <li class="nav-link" style="--i: .6s">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="nav-link" style="--i: .85s">
+                            <a href="#">Menu<i class="fas fa-caret-down"></i></a>
+                            <div class="dropdown">
+                                <ul>
+                                    <li class="dropdown-link">
+                                        <a href="#">Link 1</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="#">Link 2</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="#">Link 3<i class="fas fa-caret-down"></i></a>
+                                        <div class="dropdown second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="#">Link 1</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="#">Link 2</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="#">Link 3</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="#">More<i class="fas fa-caret-down"></i></a>
+                                                    <div class="dropdown second">
+                                                        <ul>
+                                                            <li class="dropdown-link">
+                                                                <a href="#">Link 1</a>
+                                                            </li>
+                                                            <li class="dropdown-link">
+                                                                <a href="#">Link 2</a>
+                                                            </li>
+                                                            <li class="dropdown-link">
+                                                                <a href="#">Link 3</a>
+                                                            </li>
+                                                            <div class="arrow"></div>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <div class="arrow"></div>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="#">Link 4</a>
+                                    </li>
+                                    <div class="arrow"></div>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-link" style="--i: 1.1s">
+                            <a href="#">Services<i class="fas fa-caret-down"></i></a>
+                            <div class="dropdown">
+                                <ul>
+                                    <li class="dropdown-link">
+                                        <a href="#">Link 1</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="#">Link 2</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="#">Link 3<i class="fas fa-caret-down"></i></a>
+                                        <div class="dropdown second">
+                                            <ul>
+                                                <li class="dropdown-link">
+                                                    <a href="#">Link 1</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="#">Link 2</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="#">Link 3</a>
+                                                </li>
+                                                <li class="dropdown-link">
+                                                    <a href="#">More<i class="fas fa-caret-down"></i></a>
+                                                    <div class="dropdown second">
+                                                        <ul>
+                                                            <li class="dropdown-link">
+                                                                <a href="#">Link 1</a>
+                                                            </li>
+                                                            <li class="dropdown-link">
+                                                                <a href="#">Link 2</a>
+                                                            </li>
+                                                            <li class="dropdown-link">
+                                                                <a href="#">Link 3</a>
+                                                            </li>
+                                                            <div class="arrow"></div>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <div class="arrow"></div>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="#">Link 4</a>
+                                    </li>
+                                    <div class="arrow"></div>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-link" style="--i: 1.1s">
+                            <a href="#" class="currency">USD&dollar;<i class="fas fa-caret-down"></i></a>
+                            <div class="dropdown">
+                                <ul>
+                                    <li class="dropdown-link">
+                                        <a href="#" id="usd">United States Dollar</a>
+                                    </li>
+                                    <li class="dropdown-link">
+                                        <a href="#" id="eu">European Euro </a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-link" style="--i: 1.35s">
+                            <a href="#about">About</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="log-sign" style="--i: 1.8s">
+                    <a href="signinup.html" class="btn transparent" id="signIn">Sign in</a>
+                </div>
+            </div>
+
+            <div class="hamburger-menu-container">
+                <div class="hamburger-menu">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="book">
+        <br>
+        <div class="trans">
+            <table>
+                <tr>
+                    <pre>     </pre>
+                    <p class="user"> Where to <span>Rebecca</span> ?</p>
+
+
+                    <td>
+                        <div class="search__container">
+
+                            <input class="search__input" type="text" placeholder="Search">
+                        </div>
+                    </td>
+                    <td>
+                        <input type="text" name="datefilter" value="" placeholder="Pick flight date" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="cards">
+        <div>
+            <div class="property-card">
+                <a href="#">
+                    <div class="property-image">
+                        <div class="property-image-title">
+                            <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+                        </div>
+                    </div>
+                </a>
+                <div class="property-description">
+                    <h5> Hôtel Elysées </h5>
+                    <p>3-star tourist hotel 44 Rue de l'Amiral Hamelin, 75116 Paris, France</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="grid">
+        <div class="col-3">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p class="logo title">Promo <span>Codes</span></p>
+        </div>
+        <div class="col-1">
+            <hr>
+        </div>
+        <div class="col-3">
+            <div class="pack">
+                <div class="card">
+                    <div class="face face1">
+                        <img class="promoimage promoimage1" src="image/50d.jpg">
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <br>
+                            <p id="promocode1">haramanani50</p>
+
+                            <div class="ccopy"> <button class="btn copy" onClick="copy1()">copy </button></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-3">
+            <div class="pack">
+                <div class="card">
+                    <div class="face face1">
+                        <img class="promoimage promoimage2" src="image/50d.jpg">
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <br>
+                            <p id="promocode2">beca02</p>
+
+                            <div class="ccopy"> <button class="btn copy" onClick="copy2()">copy </button></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+
+
+
+
+
+    <div class="grid">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Site footer -->
+    <footer id="about" class="site-footer">
+        <div class="grid">
+            <div class="col-6">h6>About</h6>
+                <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers
+                    build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+            </div>
+            <div class="col-6">
+                <div class="infocardContainer">
+                    <div id="main">
+                        <img src="image/about.PNG"></img>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div id="textbois">
+                        <br>
+                        <br>
+                        <h2>Karim Byeklo</h2>
+                        <h4>bel meter</h4>
+                        <a href="mailto:limecicila@gmail.com">karim.eljammal@lau.edu</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    < </div>
+
+                        <div class="col-xs-6 col-md-3">
+                            <div class="infocardContainer">
+                                <div id="main">
+                                    <img src="image/about.PNG"></img>
+                                </div>
+                                <br>
+                                <br>
+
+                                <div id="textbois">
+                                    <br>
+                                    <br>
+                                    <h2>Karim Byeklo</h2>
+                                    <h4>bel meter</h4>
+                                    <a href="mailto:limecicila@gmail.com">karim.eljammal@lau.edu</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-md-3">
+                            kdddddddddddkddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+                        </div>
+                </div>
+                <hr>
+            </div>
+
+    </footer>
+
+
+    <script src="js/date.js"></script>
+    <script src="js/copy.js"></script>
+
 </body>
+
 </html>
