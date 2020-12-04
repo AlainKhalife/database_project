@@ -14,8 +14,16 @@
     grid-column: auto/span 6;
 }
 
+.col-5 {
+    grid-column: auto/span 5;
+}
+
 .col-8 {
     grid-column: auto/span 8;
+}
+
+.col-7 {
+    grid-column: auto/span 7;
 }
 
 .col-1 {
