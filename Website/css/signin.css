@@ -45,6 +45,7 @@ a {
 a:hover {
     color: #6c9da3;
     font-size: 100%;
+    cursor: pointer;
 }
 
 .logo {
