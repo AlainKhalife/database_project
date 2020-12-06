@@ -1,0 +1,15 @@
+.a .b .c {}
+
+.a {
+    height: 200px;
+    width: 85%;
+    background-color: powderblue;
+}
+
+.b {
+    background-color: rgb(148, 99, 25);
+}
+
+.c {
+    background-color: blueviolet;
+}
