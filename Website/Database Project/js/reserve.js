@@ -370,10 +370,10 @@ $.ajax({
     dataType:'json',
     success:function(obj){
         let selectcountry = document.querySelector("#select_country");
-        for(let i=0; i<obj.length; i++){
+        for(let i=1; i<obj.length; i++){
             let option = document.createElement("option");
             option.value = obj[i].country_name;
-            option.id = i+1;
+            option.id = i;
             option.innerText = obj[i].country_name;
             selectcountry.appendChild(option);
         }
@@ -480,6 +480,11 @@ $("#reserveflight").on("click", function(){
         return;
     }
 
+    if(fromcity=="" || tocity==""){
+        alert("Fields cannot be empty");
+        return;
+    }
+
     if(fromcity.toLowerCase()==tocity.toLowerCase()){
         alert("Cannot flight to the same city");
         return;
@@ -494,10 +499,10 @@ $("#reserveflight").on("click", function(){
         success:function(obj){
             let flightprice = parseInt(obj[0].price);
             document.getElementById("flightfrom").innerText = fromcity;
-            document.getElementById("flightroom").innerText = chosenroomtyp;
+            document.getElementById("flightroom").innerText = tocity;
             document.getElementById("flightdate").innerText = flightdate;
-            document.getElementById("ticketprice").innerText = flightprice;
-            document.getElementById("flightprice").innerText = flightprice;
+            document.getElementById("ticketprice").innerText = flightprice + "$";
+            document.getElementById("flightprice").innerText = flightprice + "$";
             totalprice+=flightprice;
             document.getElementById("totalprice").innerText = totalprice + "$";
             document.getElementById("reserveflight").disabled = true;
@@ -511,12 +516,50 @@ $("#reserveflight").on("click", function(){
     });
 });
 
-$("#checkout").on("click", function(){
+$("#btn_applypromo").on("click", function(){
+    let promocode = $("#promocode").val();
+    $.ajax({
+        url:"http://localhost/Database%20Project/database.php",
+        type:"GET",
+        data: {getpromo: "true",
+                promocode: promocode},
+        dataType:'json',
+        success:function(obj){
+            if(obj.length==0){
+                alert("Wrong promocode");
+                return;
+            }
+
+            else{
+                let value = obj[0].value;
+                totalprice = totalprice - totalprice*(20/100);
+                document.getElementById("totalprice").innerText = totalprice + "$";
+                document.getElementById("btn_applypromo").style.backgroundColor = "lightgreen";
+                document.getElementById("btn_applypromo").value = `You got ${value}% off`;
+                document.getElementById("btn_applypromo").disabled = true;
+            }
+    
+        },
+        error: function(errorObj,txt){
+            alert(errorObj.status+" "+errorObj.statusText);
+        }
+    });
+});
+
+$("#btn_pay").on("click", function(){
     if(!signedin){
         alert("In order to checkout, you must be signed in");
-        return;
     }
 
+    else if($("#cname").val()=="" || $("#ccnum").val()=="" || $("#expmonth").val()=="" || $("#expyear").val()=="" || $("#cvv").val()==""){
+        alert("Make you sure you entered all fields correctly");
+    }
+
+    else if(!isNumeric(document.getElementById("ccnum").value) || !isNumeric(document.getElementById("cvv").value) || !isNumeric(document.getElementById("expyear").value)){
+        alert("Incorrect Credit Card Details");
+    }
+
+    else{
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -530,6 +573,20 @@ $("#checkout").on("click", function(){
     let fromcity = document.getElementById("fromflight").value;
     let tocity = document.getElementById("toflight").value;
     let username = getCookie("username");
+
+        if(fromcity==""){
+            fromcity="No Flight";
+        }
+        if(tocity==""){
+            tocity="No Flight";
+        }
+        if(fromdate==""){
+            fromdate="No Flight";
+        }
+        if(todate==""){
+            todate="No Flight";
+        }
+
     $.ajax({
         url:"http://localhost/Database%20Project/database.php",
         type:"POST",
@@ -547,11 +604,40 @@ $("#checkout").on("click", function(){
         dataType:'text',
         success:function(obj){
             alert("Reservation successful");
-            document.getElementById("checkout").disabled = true;
-            document.getElementById("checkout").innerText = "Thank you";
+            document.getElementById("btn_pay").disabled = true;
+            document.getElementById("btn_pay").value = "Purchase Successful";
+            window.location.reload();
         },
         error: function(errorObj,txt){
             alert(errorObj.status+" "+errorObj.statusText);
         }
     });
+    }
+});
+
+function isNumeric(str) {
+    if (typeof str != "string") 
+    return false;
+
+    return !isNaN(str) &&  !isNaN(parseFloat(str))
+  }
+
+  $.ajax({
+    url:"http://localhost/Database%20Project/database.php",
+    type:"POST",
+    data: {getallcities: "true"},
+    dataType:'json',
+    success:function(obj){
+        let pickfromcities = document.getElementById("toflight");
+        for(let i=0; i<obj.length; i++){
+            let option = document.createElement("option");
+            option.value = obj[i].city_name;
+            option.id = obj[i].city_name;
+            option.innerText = obj[i].city_name;
+            pickfromcities.appendChild(option);
+        }
+    },
+    error: function(errorObj,txt){
+        alert(errorObj.status+" "+errorObj.statusText);
+    }
 });

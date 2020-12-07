@@ -114,7 +114,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['signinreq'])){
     echo $result;
 }
 
-if($_SERVER['REQUEST_METHOD']=='GET' && !isset($_GET['getreservation']) && !isset($_GET['reserveflight']) && !isset($_GET['checkroom']) && !isset($_GET['reservation']) && !isset($_GET['selectcity']) && !isset($_GET['searchhotel'])){
+if($_SERVER['REQUEST_METHOD']=='GET' && !isset($_GET['getpromo']) && !isset($_GET['getreservation']) && !isset($_GET['reserveflight']) && !isset($_GET['checkroom']) && !isset($_GET['reservation']) && !isset($_GET['selectcity']) && !isset($_GET['searchhotel'])){
     header('Content-type:application/json;charset=utf-8');
     $connection = connectDb("localhost","root","","travel_agency");
     $username = $_GET['username'];
@@ -179,6 +179,16 @@ if($_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['getreservation'])){
     echo $ans;
 }
 
+if($_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['getpromo'])){
+    header('Content-type:application/json;charset=utf-8');
+    $connection = connectDb("localhost","root","","travel_agency");
+
+    $promo = $_GET['promocode'];
+    $result = selectQuery($connection, "select value from offers where name='$promo'");
+    $ans = json_encode($result);
+    echo $ans;
+}
+
 if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['checkout'])){
     header('Content-Type: text/plain');
     $connection = connectDb("localhost","root","","travel_agency");
@@ -196,6 +206,14 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['checkout'])){
     $ssn = $getssn[0]['SSN'];
 
     executeQuery($connection, "insert into reservation (from_city, to_city, from_date, to_date, date, Customer_SSN, Hotel_idHotel, payment_amount, Flight_idFlight) values ('$fromcity','$tocity','$fromdate','$todate','$date','$ssn','$hotelid', '$price','$flightid')");
+}
+
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['getallcities'])){
+    header('Content-type:application/json;charset=utf-8');
+    $connection = connectDb("localhost","root","","travel_agency");
+    $result = selectQuery($connection, "select city_name from cities where Country_idCountry>0");
+    $ans = json_encode($result);
+    echo $ans;
 }
 
 ?>

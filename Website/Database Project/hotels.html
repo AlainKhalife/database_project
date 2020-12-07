@@ -18,43 +18,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
-    <script>
-        function initPayPalButton() {
-            paypal.Buttons({
-                style: {
-                    size: 'small',
-                    shape: 'pill',
-                    color: 'silver',
-                    layout: 'vertical',
-                    label: 'paypal',
-
-                },
-
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            "amount": {
-                                "currency_code": "USD",
-                                "value": 1
-                            }
-                        }]
-                    });
-                },
-
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                    });
-                },
-
-                onError: function(err) {
-                    console.log(err);
-                }
-            }).render('#paypal-button-container');
-        }
-        initPayPalButton();
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -95,7 +58,7 @@
             width: 180px;
         }
         
-        .dest1 .dest2 {
+        .dest1 .dest2 .promocode {
             border-radius: 25px;
             background-color: #eee;
             border: none;
@@ -119,6 +82,8 @@
         body{
             background-color: aliceblue;
         }
+
+        
     </style>
 </head>
 
@@ -457,7 +422,9 @@
                     </div>
                     <div class="dest">
                         <input type="text" id="fromflight" class="dest1" name="from" value="" placeholder="from" />
-                        <input type="text" id="toflight" class="dest2" name="from" value="" placeholder="to" />
+                        <select id="toflight" class="custom-select custom-select-lg mb-3">
+                            <option selected>Select your destination</option>
+                          </select>
                     </div>
                     <input type="text" id="flightdatepick" class="datee" name="datefilter" value="" placeholder="Pick flight date" />
 
@@ -525,6 +492,11 @@
                         <td id="totalprice" style="width: 100px" class="tdd">0$</td>
                     </tr>
                 </table>
+                <input style="margin-left: 10px;" type="text" id="promocode" class="promocode" placeholder="Enter Promocode" />
+                <input style="margin-left: 10px;" type="button" id="btn_applypromo" value="Apply" class="applypromo" />
+                <br>
+                <br>
+                <button style="margin-left: 60%;"><a id="procees_checkout" href="#" data-toggle="modal" data-target="#checkout_form">Procceed To Payment</a></button>
             </div>
             <br>
 
@@ -543,7 +515,66 @@
     </button>
 
 
-
+    <!-- Below is the profile PopUp-->
+    <div class="modal fade" id="checkout_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fluid" role="document">
+          <!--Content-->
+          <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+              <h4 class="modal-title w-100">Checkout</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-75">
+                      <div class="container">
+                        <form>
+                            <div class="col-50">
+                              <h3>Payment</h3>
+                              <label for="fname">Accepted Cards</label>
+                              <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                <i class="fa fa-cc-discover" style="color:orange;"></i>
+                              </div>
+                              <label for="cname">Name on Card</label>
+                              <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                              <br>
+                              <label for="ccnum">Credit card number</label>
+                              <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                              <br>
+                              <label for="expmonth">Exp Month</label>
+                              <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                              <br>
+                              <label for="expyear">Exp Year</label>
+                              <input type="text" id="expyear" name="expyear" placeholder="2018">
+                              <br>
+                              <label for="cvv">CVV</label>
+                              <input type="text" id="cvv" name="cvv" placeholder="352">
+                            </div>
+                            
+                          </div>
+                          <br>
+                          <input style="margin-left: 20%; background-color: lightgreen; font-size: larger;" id="btn_pay" type="button" value="Proceed to checkout" class="btn">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+              <button type="button" id="form_btn_close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          <!--/.Content-->
+        </div>
+      </div>
 
 
     <script src="./js/date.js"></script>
