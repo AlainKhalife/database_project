@@ -43,3 +43,16 @@ $("#signout").on("click", function(){
   document.getElementById("user").innerText = "";
 
 });
+
+// This will scroll the page to the container of the exam test options
+$("#aboutnav").click(function() {
+  $('html,body').animate({
+      scrollTop: $("#about").offset().top},
+      'slow');
+});
+
+$("#homenav").click(function() {
+  $('html,body').animate({
+      scrollTop: 0},
+      'slow');
+});

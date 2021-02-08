@@ -10,6 +10,27 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+.trans2 {
+    margin-left: 100PX;
+    margin-right: 50PX;
+    margin-top: 50px;
+    margin-bottom: 100PX;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 25px;
+    width: 1000px;
+}
+
+
+/*EDIT added book2*/
+
+.book2 {
+    background-image: url('../image/cover.jpg');
+    background-size: cover;
+    height: 600px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
 .book {
     background-image: url('../image/map.jpg');
     height: 300px;

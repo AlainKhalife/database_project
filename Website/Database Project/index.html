@@ -25,7 +25,17 @@
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/offers.css">
+    <link rel="stylesheet" href="css/edit.css">
     <style>
+        .browse:hover {
+            background-color: rgb(159, 222, 224);
+            color: white;
+        }
+        
+        .browse {
+            color: white;
+        }
+        
         .title {
             color: #6c9da3;
             font-size: xx-large;
@@ -35,26 +45,62 @@
             color: #49a3af;
             font-size: xx-large;
         }
+        
+        .covid19 {
+            height: 400px;
+            background-color: powderblue;
+        }
+        
+        .gel {
+            height: 220px;
+            width: 250px;
+            margin-top: 10px;
+        }
+        
+        .mask {
+            margin-top: 60px;
+            height: 150px;
+            width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .distt {
+            height: 210px;
+            width: 290px;
+            margin-top: 20px;
+        }
+        
+        .lug {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            height: 200px;
+            width: 300px;
+            margin-bottom: 0px;
+        }
+        
+        .vid {
+            margin-left: 20px;
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <div class="container">
+        <div id="mainheadernav" class="container">
             <input type="checkbox" name="" id="check">
-    
+
             <div class="logo-container">
                 <h3 class="logo">Globe<span>trotter</span> <i class="fas fa-plane" style="font-size:20px"></i></h3>
             </div>
-    
+
             <div class="nav-btn">
                 <div class="nav-links">
                     <ul>
                         <li class="nav-link" style="--i: .6s">
-                            <a href="#">Home</a>
+                            <a id="homenav" href="#">Home</a>
                         </li>
                         <li class="nav-link" style="--i: 1.35s">
-                            <a href="#">About</a>
+                            <a id="aboutnav" href="#">About</a>
                         </li>
                         <li class="nav-link" style="--i: 1.35s">
                             <a href="./hotels.html">Reserve</a>
@@ -68,18 +114,18 @@
                                     </li>
                                     <li class="dropdown-link">
                                         <a id="signout" href="#">Sign Out</a>
-                                    <div class="arrow"></div>
+                                        <div class="arrow"></div>
                                 </ul>
                             </div>
-                        </li>
+                            </li>
                     </ul>
                 </div>
-    
+
                 <div class="log-sign" style="--i: 1.8s">
                     <a href="signinup.html" class="btn transparent" id="signIn">Sign in</a>
                 </div>
             </div>
-    
+
             <div class="hamburger-menu-container">
                 <div class="hamburger-menu">
                     <div></div>
@@ -88,47 +134,66 @@
         </div>
     </header>
 
-
-    <div class="book">
+    <!--EDIT changed class name-->
+    <div class="book2">
         <br>
-        <div class="trans">
+        <!--EDIT changed class name-->
+        <div class="trans2">
             <table>
                 <tr>
                     <pre>     </pre>
-                    <p class="user"> Where to <span id="user"></span> ?</p>
 
 
                     <td>
-                        <p>Explore an amazing range of hotels and flights at the most affordable prices</p>
+                        <!--EDIT changed class name-->
+                        <p class="welcome whereto">Explore an amazing range of hotels and flights </p>
+                        <p class="welcome whereto">at the most affordable prices</p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="user"> Where to <span id="user"></span> ?<pre>  </pre><br><br> <button onclick="window.location.href = './hotels.html'" class=" transparent browse"><a href="./hotels.html" class="aa">Browse</a></button></p>
                     </td>
                     <td>
-                        <button><a href="./hotels.html">Browse Hotels</a></button>
+
                     </td>
                 </tr>
             </table>
         </div>
     </div>
 
-    <div class="cards">
-        <div>
-            <div class="property-card">
-                <a href="#">
-                    <div class="property-image">
-                        <div class="property-image-title">
-                            <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
-                        </div>
-                    </div>
-                </a>
-                <div class="property-description">
-                    <h5> Hôtel Elysées </h5>
-                    <p>3-star tourist hotel 44 Rue de l'Amiral Hamelin, 75116 Paris, France</p>
-                </div>
+    <br>
+    <br>
+    <p class="logo title vid">COVID19 <span>Directives</span></p>
 
+    <div class="covid19">
+        <div class="grid">
+            <div class="col-3">
+                <img src="image/mask.PNG" class="mask">
+                <br>
+                <p>Wear your face mask at all times. Make sure you have enough masks for your journey. </p>
+                <p>A mask should be replaced every 4 hours.</p>
             </div>
+            <div class="col-3">
+                <img src="image/gel.PNG" class="gel">
+                <p>Bring your own hand sanitizer to disinfect surfaces regularly. Please pay close attention to the regulations for traveling with liquids in your carry-on luggage.</p>
+            </div>
+            <div class="col-3">
+                <img src="image/distance.PNG" class="distt">
+                <p> Maintain social distancing upon leaving the plane. Keep a physical distance of minimum 1.5 meters, and follow signage for your safety.</p>
+            </div>
+            <div class="col-3">
+                <img src="image/luggage.PNG" class="lug">
+                <p> You are encouraged to travel as lightly as possible with all luggage checked-in except small hand luggage that fit under the seat.</p>
+            </div>
+
         </div>
+
+
     </div>
-
-
+    <br>
+    <br>
     <div class="grid">
         <div class="col-3">
             <br>
@@ -187,21 +252,9 @@
 
 
 
+    <br>
+    <br>
 
-
-    <div class="grid">
-        <div class="col-4">
-
-        </div>
-        <div class="col-4">
-
-        </div>
-        <div class="col-4">
-
-        </div>
-
-
-    </div>
 
 
     <!-- Site footer -->
@@ -209,7 +262,8 @@
         <div class="grid">
             <div class="col-7">
                 <p class="logo title">About</p>
-                <p class="text-justify">The purpose of this website is to wisely help you plan your vacation. It provides you with 30 countries, 270 hotels in over 90 cities. <br> Front-end Developper: Rebecca Tannous. <br> Database Management and data collection: Karim El Jammal <br> Back-end management: Alain Khalife</p>
+                <p class="text-justify">The purpose of this website is to wisely help you plan your vacation. It provides you with 30 countries, 270 hotels in over 90 cities. <br> Front-end Developper: Rebecca Tannous. <br> Database Management and data collection: Karim El Jammal
+                    <br> Back-end management: Alain Khalife</p>
             </div>
             <div class="col-5">
                 <div class="infocardContainer">

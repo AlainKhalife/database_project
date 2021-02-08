@@ -174,7 +174,7 @@ if($_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['getreservation'])){
     $getssn = selectQuery($connection, "select SSN from customer where Name='$username'");
     $ssn = $getssn[0]['SSN'];
 
-    $result = selectQuery($connection, "select * from reservation where Customer_SSN='$ssn'");
+    $result = selectQuery($connection, "select r.*, h.hotel_name from reservation r, hotel h, customer c where r.Hotel_idHotel=h.idHotel AND r.Customer_SSN=c.SSN AND c.SSN=$ssn");
     $ans = json_encode($result);
     echo $ans;
 }

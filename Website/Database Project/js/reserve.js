@@ -468,6 +468,7 @@ $("body").on("click", "button.buttonroom" ,function(e){
     chosenroomtyp =chosenroomtype;
     totalprice+=price;
     document.getElementById("totalprice").innerText = totalprice + "$";
+    reservedHotel = hotelchosen;
 });
 
 $("#reserveflight").on("click", function(){
@@ -577,7 +578,7 @@ $("#btn_pay").on("click", function(){
         if(fromcity==""){
             fromcity="No Flight";
         }
-        if(tocity==""){
+        if(tocity=="Select your destination"){
             tocity="No Flight";
         }
         if(fromdate==""){
@@ -641,3 +642,10 @@ function isNumeric(str) {
         alert(errorObj.status+" "+errorObj.statusText);
     }
 });
+
+$("#procees_checkout").on("click", function(e){
+    if(reservedHotel=="" && document.getElementById("reserveflight").disabled==false){
+        alert("Cannot Proceed to checkout. You must book at least 1 flight or 1 hotel");
+        e.stopPropagation();
+    }
+})

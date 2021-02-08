@@ -40,7 +40,13 @@ const deleteCookie = ()=>{
 }
 
 
-$("#btn_signup").on("click", function(){
+$("#btn_signup").on("click", function(e){
+    e.preventDefault();
+    if($("#signup_name").val()=="" || $("#signup_pass").val()=="" || $("#signup_ccpass").val()=="" || $("#signup_email").val()=="" || $("#signup_nbr").val()=="" || $("#signup_description").val()==""){
+        alert("All fields must be filled in order to sign up");
+        return;
+    }
+
 	$.ajax({
         url:"http://localhost/Database%20Project/database.php",
         type:"POST",
@@ -51,7 +57,7 @@ $("#btn_signup").on("click", function(){
 			   phonenumber: $("#signup_nbr").val(),
 			   address: $("#signup_description").val(),
                signupreq: "true"},
-        dataType:'text',
+               dataType:'text',
         success:function(obj){
             if(obj==1){
             let username = $("#signup_name").val();
@@ -64,10 +70,12 @@ $("#btn_signup").on("click", function(){
 
             else if(obj==-1){
                 alert('Username already exists');
+                return;
             }
 
             else{
                 alert('Incorrect Passwords !');
+                return;
             }
         },
         error: function(errorObj,txt){
@@ -76,7 +84,8 @@ $("#btn_signup").on("click", function(){
     });
 });
 
-$("#btn_signin").on("click", function(){
+$("#btn_signin").on("click", function(e){
+    e.preventDefault();
 	$.ajax({
         url:"http://localhost/Database%20Project/database.php",
         type:"POST",

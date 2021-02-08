@@ -58,16 +58,36 @@ $.ajax({
       dataType:'json',
       success:function(obj){
           for(let i=1; i<=obj.length; i++){
-            let div = document.createElement("div");
-            let h4 = document.createElement("h4");
-            h4.innerText = "Reservation Number " + i + ":";
+            let hotelid = obj[i-1].Hotel_idHotel;
+            let maindiv = document.createElement("div");
+            maindiv.className = "card";
+            maindiv.style.width = "18rem";
+            maindiv.style.display = "inline-block";
+            maindiv.style.marginLeft = "15px"
+
+            let hotelimage = document.createElement("img");
+            hotelimage.className = "card-img-top";
+            hotelimage.src = `./image/hotel_images/${hotelid}.jpg`;
+            hotelimage.alt = "Hotel Image";
+            hotelimage.width = "600";
+            hotelimage.height = "200";
+            maindiv.appendChild(hotelimage);
+
+            let cardbody = document.createElement("div"); // Card body
+            cardbody.className = "card-body";
+
+            let cardtitle = document.createElement("h5");
+            cardtitle.className = "card-title";
+            cardtitle.innerText = obj[i-1].hotel_name;
             let p = document.createElement("p");
-            p.innerText = `Reservation ID: ${obj[i-1].idReservation}\nFlight ID: ${obj[i-1].Flight_idFlight}\nDate of Reservation: ${obj[i-1].date}\nDepartment City: ${obj[i-1].from_city}\nArrival City: ${obj[i-1].to_city}\nReservation Validity Date: From: ${obj[i-1].from_date} - Till: ${obj[i-1].to_date}\nPayment Ammount: ${obj[i-1].payment_amount}$`;
-            div.appendChild(h4);
-            div.appendChild(p);
-            div.appendChild(document.createElement("hr"));
-            div.style.marginLeft = "25px";
-            document.body.appendChild(div);
+            p.innerText = `Reservation ID: ${obj[i-1].idReservation}\nReserved hotel: ${obj[i-1].hotel_name}\nFlight ID: ${obj[i-1].Flight_idFlight}\nDate of Reservation: ${obj[i-1].date}\nDepartment City: ${obj[i-1].from_city}\nArrival City: ${obj[i-1].to_city}\nReservation Validity Date: From: ${obj[i-1].from_date} - Till: ${obj[i-1].to_date}\nPayment Ammount: ${obj[i-1].payment_amount}$`;
+            
+            cardbody.appendChild(cardtitle);
+            cardbody.appendChild(p);
+
+            maindiv.appendChild(cardbody);
+
+            document.getElementById("reservations").appendChild(maindiv);
           }
 
       },
